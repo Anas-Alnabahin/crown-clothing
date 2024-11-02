@@ -18,7 +18,7 @@ const firebaseConfig = {
   appId: "1:945707970633:web:3594c2c812c8640d7ccf98",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -73,10 +73,3 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
-
-/**
- * explain the code step by step and what every function and method,
- * talk about the abstraction(or seperation) from the external services pattern, that makes the entire project
- * interact with an external service form one interface, so it makes it easier to maintaine and about all the
- * best practices in this code...
- */

@@ -24,7 +24,7 @@ const middleWares = [process.env.NODE_ENV !== "production" && logger].filter(
 const composedEnhancer =
   (process.env.NODE_ENV !== "production" &&
     window &&
-    window.__REDUX_DEVTOOLS_EXTENSION__) ||
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
 const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares));

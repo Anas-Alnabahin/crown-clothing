@@ -10,11 +10,14 @@ export default [
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
       parserOptions: {
         ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
         sourceType: "module",
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
       },
     },
     settings: { react: { version: "18.3" } },
@@ -22,10 +25,6 @@ export default [
       react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-    },
-    env: {
-      node: true,
-      browser: true,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -38,7 +37,8 @@ export default [
         { allowConstantExport: true },
       ],
       "react/prop-types": "off",
-      "no-unused-vars": "off",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
     },
   },
 ];

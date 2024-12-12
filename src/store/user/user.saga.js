@@ -9,6 +9,7 @@ import {
   signUpFailed,
   signOutSuccess,
   signOutFailed,
+  loadingForUserCheckEnds,
 } from "./user.action";
 
 import {
@@ -59,7 +60,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
-    if (!userAuth) return;
+    if (!userAuth) return yield put(loadingForUserCheckEnds());
     yield call(getSnapshotFromUserAuth, userAuth);
   } catch (error) {
     yield put(signInFailed(error));

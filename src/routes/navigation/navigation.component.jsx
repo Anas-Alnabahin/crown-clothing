@@ -14,6 +14,8 @@ import { signOutStart } from "../../store/user/user.action";
 import CrwnLogo from "../../assets/crown.svg?react";
 
 import {
+  AuthSpinner,
+  AuthSpinnerContainer,
   LogoContainer,
   NavigationContainer,
   NavLink,
@@ -37,7 +39,9 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to={"/shop"}>SHOP</NavLink>
           {isLoading ? (
-            <NavLink as="span">LOADING...</NavLink>
+            <AuthSpinnerContainer>
+              <AuthSpinner />
+            </AuthSpinnerContainer>
           ) : currentUser ? (
             <NavLink as="span" onClick={signOutUser}>
               Sign Out

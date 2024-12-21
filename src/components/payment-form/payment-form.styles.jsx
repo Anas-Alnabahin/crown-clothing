@@ -21,5 +21,6 @@ export const PaymentButton = styled(Button)`
   &:disabled {
     background-color: black;
     color: white;
+    cursor: no-drop;
   }
 `;

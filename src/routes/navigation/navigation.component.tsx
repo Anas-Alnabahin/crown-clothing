@@ -20,6 +20,7 @@ import {
   NavigationContainer,
   NavLink,
   NavLinks,
+  StyledSpan,
 } from "./navigation.styles";
 
 const Navigation = () => {
@@ -34,7 +35,7 @@ const Navigation = () => {
     <>
       <NavigationContainer>
         <LogoContainer to={"/"}>
-          <CrwnLogo className="logo" />
+          <CrwnLogo />
         </LogoContainer>
         <NavLinks>
           <NavLink to={"/shop"}>SHOP</NavLink>
@@ -43,9 +44,9 @@ const Navigation = () => {
               <AuthSpinner />
             </AuthSpinnerContainer>
           ) : currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
+            <StyledSpan as="span" onClick={signOutUser}>
               Sign Out
-            </NavLink>
+            </StyledSpan>
           ) : (
             <NavLink to={"/auth"}>SIGN IN</NavLink>
           )}

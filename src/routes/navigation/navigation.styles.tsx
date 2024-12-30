@@ -30,7 +30,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 `;
 
-export const AuthSpinnerContainer = styled(NavLink)`
+export const AuthSpinnerContainer = styled.div`
   cursor: default;
   padding: 10px 18.5px;
 `;
@@ -38,4 +38,9 @@ export const AuthSpinnerContainer = styled(NavLink)`
 export const AuthSpinner = styled(SpinnerContainer)`
   width: 25px;
   height: 25px;
+`;
+
+export const StyledSpan = styled.span`
+  padding: 10px 15px;
+  cursor: pointer;
 `;

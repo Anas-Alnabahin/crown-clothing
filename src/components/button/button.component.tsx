@@ -9,7 +9,7 @@ import {
 
 import { BUTTON_TYPE_CLASSES } from "./button.types";
 
-const getButton = (buttonType = BUTTON_TYPE_CLASSES.base): typeof BaseButton =>
+const getButton = (buttonType = BUTTON_TYPE_CLASSES.base) =>
   ({
     [BUTTON_TYPE_CLASSES.base]: BaseButton,
     [BUTTON_TYPE_CLASSES.google]: GoogleSignInButton,

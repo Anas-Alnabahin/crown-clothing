@@ -26,7 +26,8 @@ export const BaseButton = styled.button`
     color: black;
     border: 1px solid black;
   }
-`;
+`  as React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>;
+
 export const GoogleSignInButton = styled(BaseButton)`
   background-color: #4285f4;
   color: white;

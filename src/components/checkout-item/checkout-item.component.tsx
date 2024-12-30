@@ -17,15 +17,23 @@ import {
   RemoveButton,
 } from "./checkout-item.styles";
 
-const CheckoutItem = ({ cartItem }) => {
+import { CartItem as TCartItem } from "../../store/cart/cart.types";
+
+type CheckoutItemProps = {
+  cartItem: TCartItem;
+};
+
+const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
-  const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, cartItem));
+  const clearItemHandler = () =>
+    dispatch(clearItemFromCart(cartItems, cartItem));
   const addItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
-  const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+  const removeItemHandler = () =>
+    dispatch(removeItemFromCart(cartItems, cartItem));
 
   return (
     <CheckoutItemContainer>

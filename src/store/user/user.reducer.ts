@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { UnknownAction } from "redux";
 
 import {
   checkUserSession,
@@ -30,7 +30,7 @@ export const INITIAL_STATE: UserState = {
 
 export const userReducer = (
   state = INITIAL_STATE,
-  action: AnyAction
+  action: UnknownAction
 ): UserState => {
   if (
     emailSignInStart.match(action) ||

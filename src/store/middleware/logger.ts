@@ -1,10 +1,10 @@
-import { Middleware, AnyAction, UnknownAction } from "redux";
+import { Middleware, UnknownAction } from "redux";
 
 import { RootState } from "../store";
 
 export const loggerMiddleware: Middleware<{}, RootState> =
   (store) => (next) => (action) => {
-    if (isAnyAction(action)) {
+    if (isUnknownAction(action)) {
       // if (!action.type) {
       //   return next(action);
       // }
@@ -19,6 +19,6 @@ export const loggerMiddleware: Middleware<{}, RootState> =
     }
   };
 
-function isAnyAction(action: unknown): action is AnyAction {
+function isUnknownAction(action: unknown): action is UnknownAction {
   return typeof action === "object" && action !== null && "type" in action;
 }

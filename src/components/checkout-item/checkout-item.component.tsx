@@ -18,12 +18,13 @@ import {
 } from "./checkout-item.styles";
 
 import { CartItem as TCartItem } from "../../store/cart/cart.types";
+import { memo } from "react";
 
 type CheckoutItemProps = {
   cartItem: TCartItem;
 };
 
-const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CheckoutItemProps) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
   const dispatch = useDispatch();
@@ -50,6 +51,6 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
       <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );
-};
+});
 
 export default CheckoutItem;

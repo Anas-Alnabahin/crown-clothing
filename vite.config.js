@@ -12,4 +12,9 @@ export default defineConfig({
     }),
     svgr(),
   ],
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./src/setupTests.js",
+  },
 });

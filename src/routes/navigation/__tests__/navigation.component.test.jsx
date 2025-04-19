@@ -1,8 +1,9 @@
-import { screen } from "@testing-library/react";
+import { screen, fireEvent } from "@testing-library/react";
+import * as reactRedux from "react-redux";
 
 import Navigation from "../navigation.component";
-
 import { renderWithProviders } from "../../../utils/test/test.utils";
+import { signOutStart } from "../../../store/user/user.action";
 
 describe("Navigation tests", () => {
   test("It should render a sign in link and not a Sign Out link if there is no currentUser", () => {
@@ -63,5 +64,28 @@ describe("Navigation tests", () => {
 
     const dropDownTextElement = screen.getByText(/your cart is empty/i);
     expect(dropDownTextElement).toBeInTheDocument();
+  });
+
+  test("It should dispatch signOutStart action when clicking on the Sign Out link", async () => {
+    //todo: search how to do mocks and spies with vitest!
+    const mockDispatch = jest.fn();
+    jest.spyOn(reactRedux, "useDispatch").mockReturnValue(mockDispatch);
+
+    renderWithProviders(<Navigation />, {
+      preloadedState: {
+        user: {
+          currentUser: {},
+        },
+      },
+    });
+
+    expect(screen.getByText("SIGN OUT")).toBeInTheDocument();
+
+    await fireEvent.click(screen.getByText("SIGN OUT"));
+
+    expect(mockDispatch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalledWith(signOutStart());
+
+    mockDispatch.mockClear();
   });
 });
